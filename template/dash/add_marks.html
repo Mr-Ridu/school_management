@@ -1,0 +1,73 @@
+{% extends 'dash/hfn/dash.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block title %}Add Marks{% endblock %}
+
+{% block content %}
+
+
+<!--== BODY INNER CONTAINER ==-->
+<div class="sb2-2">
+    <!--== breadcrumbs ==-->
+    <div class="sb2-2-2">
+        <ul>
+            <li><a href="index-2.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre"><a href="#"> Add Marks</a>
+            </li>
+            <li class="page-back"><a href="index-2.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="sb2-2-3">
+        <div class="box-inn-sp admin-form">
+            <div class="sb2-2-add-blog sb2-2-1">
+                <h2>Add Marks for "{{exam.exam_name}}"</h2>
+
+                <div class="bor">
+                    <div class="row boro">
+                        <div class="col-md-4">Exam Name : {{exam.exam_name}}</div>
+                        <div class="col-md-4">Class : {{teacher.classteacher|cls}}</div>
+                        <div class="col-md-4">Section : {{teacher.classteacher|sec}} </div>
+                    </div>
+                </div>
+
+               
+                <div class="bor">
+                    {% if sub %}
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="form-group col-md-12">
+                            <label for="st" class="upper text-center">Student details: *</label>
+                            <select id="st" name="stdetail" class="form-control selectpicker" data-live-search="true">
+                                <option selected disabled>Students</option>
+
+                                {% for stu in student %}
+                                <option value="{{stu.id}}">Name:{{stu.first_name}} {{stu.last_name}}| Roll: {{stu.roll_number}}| Student ID: {{stu.student_id}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        {% for s in sub %}
+                        <div class="row">
+                            <div class="col s12 col-md-12">
+                                <label for="inp" class="upper">{{s}}</label>
+
+                                <input type="number" id="inp" name="marks_{{ s.id }}"
+                                    placeholder="Enter marks for: {{ s }}">
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <input type="submit" value="Submit">
+                    </form>
+                    {% endif %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

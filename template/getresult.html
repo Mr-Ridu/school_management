@@ -1,0 +1,90 @@
+{% extends 'fundamental/main.html' %}
+{% load static %}
+{% block title %}Result{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 pb-5 ">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 border showres">
+            <div>
+                <h3 class="ret text-center">Search Result</h3>
+            </div>
+
+            <form action="" method="post" target="_blank" >
+                    {% csrf_token %}
+            <div class="col-md-6">
+
+                <h5> Examination Name :</h5>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <select class="form-control selectpicker" data-live-search="true" name="exam_name">
+                        <option selected disabled>Exam Name</option>
+                        {% for e in exm %}
+                        <option value="{{e.exam_name}}">{{e.exam_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <h5> Class :</h5>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <select class="form-control selectpicker" data-live-search="true" name="class_name">
+                        <option selected disabled>Class</option>
+                        {% for e in cls %}
+                        <option value="{{e.classess}}">{{e.classess}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <h5> Section :</h5>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <select class="form-control selectpicker" data-live-search="true" name="section">
+                        <option selected disabled>Section</option>
+                        {% for e in sec %}
+                        <option value="{{e.sec}}">{{e.sec}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h5> Class roll :</h5>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="number" class="form-control" name="class_roll">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <h5> Student ID :</h5>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="stu_id" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <input class="mb-2 btn btn-sm text-center" type="submit" value="Search Result">
+
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

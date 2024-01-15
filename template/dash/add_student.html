@@ -1,0 +1,440 @@
+{% extends 'dash/hfn/dash.html' %}
+{% load static %}
+<!--  -->
+{% block title %}Add Student{% endblock %}
+
+{% block content %}
+
+
+<!--== BODY INNER CONTAINER ==-->
+<div class="sb2-2">
+  <!--== breadcrumbs ==-->
+  <div class="sb2-2-2">
+    <ul>
+      <li><a href="index-2.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+      </li>
+      <li class="active-bre"><a href="#"> Add new student</a>
+      </li>
+      <li class="page-back"><a href="index-2.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+      </li>
+    </ul>
+  </div>
+
+  <!--== User Details ==-->
+  <div class="sb2-2-3">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box-inn-sp admin-form">
+          <div class="inn-title">
+            <h4>Add New Student Informations</h4>
+            <p>Here you can edit your website basic details URL, Phone, Email, Address, User and password and more</p>
+          </div>
+          <div class="tab-inn">
+            <!-- -------st-----------from wizard--- -->
+
+            <div class="row">
+              <div class="col-sm-12 col-lg-12">
+                <div class="iq-card">
+
+                  <div class="iq-card-body">
+                    <form id="form-wizard1" method="post" action="{% url 'add_student' %}" class="text-center mt-4">
+                      {% csrf_token %}
+                      <ul id="top-tab-list" class="p-0">
+                        <li class="active" id="account">
+                          <a href="javascript:void();">
+                            <i class="fas fa-user"></i><span>Personal</span>
+                          </a>
+                        </li>
+                        <li id="personal">
+                          <a href="javascript:void();">
+                            <i class="fas fa-graduation-cap"></i><span>Academic Info</span>
+                          </a>
+                        </li>
+                        <li id="payment">
+                          <a href="javascript:void();">
+                            <i class="fas fa-ellipsis-h"></i><span>Others</span>
+                          </a>
+                        </li>
+                        <li id="confirm">
+                          <a href="javascript:void();">
+                            <i class="fas fa-star"></i> <span>Extracurricular</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <!-- fieldsets -->
+                      <fieldset>
+                        <div class="form-card text-left">
+                          <div class="row">
+                            <div class="col-7">
+                              <h3 class="mb-4">Personal Information:</h3>
+                            </div>
+                            <div class="col-5">
+                              <h2 class="steps">Step 1 - 4</h2>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>First Name: *</label>
+                                <input type="text" class="form-control" name="first_name" placeholder="First Name" />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Last Name: *</label>
+                                <input type="text" class="form-control" name="last_name" placeholder="Last Name" />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Date of Birth: *</label>
+                                <input type="date" class="form-control" name="date_of_birth" />
+                              </div>
+                            </div>
+
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Nationality: *</label>
+                                <input type="text" class="form-control" name="nationality" placeholder="Nationality" />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Address: *</label>
+                                <textarea class="form-control" name="address" placeholder="Address"></textarea>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Contact Number: *</label>
+                                <input type="number" class="form-control" name="contact_number"
+                                  placeholder="Contact Number" />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Gender: *</label>
+                                <select name="gender" class="form-control" data-live-search="true">
+                                  <option value="male">Male</option>
+                                  <option value="female">Female</option>
+                                  <option value="others">Others</option>
+                                  <!-- Add more gender options if needed -->
+                                </select>
+                              </div>
+                            </div>
+                            <!-- <div class="col-md-6">
+
+                            </div> -->
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Gurdian name: *</label>
+                                <input type="text" class="form-control" name="parent_name" placeholder="Gurdian Name" />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                
+                                <label for="relationshipSelect" >Relationship to Student: *</label>
+                                <select class="form-control selectpicker" data-live-search="true"  name="relationship_to_student"  >
+                                  <option selected disabled>Select Relationship</option>
+                                  <option value="parent">Parent</option>
+                                  <option value="mother">Mother</option>
+                                  <option value="father">Father</option>
+                                  <option value="stepfather">Step Father</option>
+                                  <option value="stepmother">Step Mother</option>
+                                  <option value="grandparent">Grandparent</option>
+                                  <option value="grandmother">Grandfather</option>
+                                  <option value="grandmother">Grandmother</option>
+                                  <option value="uncle">Uncle</option>
+                                  <option value="aunt">Aunt</option>
+                                  <option value="cousin">Cousin</option>
+                                  <option value="sibling">Sibling</option>
+                                  <option value="friend">Friend</option>
+                                  <option value="fosterparent">Foster Parent</option>
+                                  <option value="legalgurdian">Legal Guardian</option>
+                                  <option value="other">Other (Specify)</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Gurdian contact Number: *</label>
+                                <input type="number" class="form-control" name="parent_contact_number" placeholder="" />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Gurdian's NID: *</label>
+                                <input type="number" class="form-control" name="parent_nid" placeholder="" />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Parent Email: *</label>
+                                <input type="email" class="form-control" name="parent_email" />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Parent's Address: *</label>
+                                <textarea class="form-control" name="parent_address"
+                                  placeholder=" Parent's Address"></textarea>
+                              </div>
+                            </div>
+
+                          </div>
+
+                        </div>
+                        <button type="button" name="next" class="btn btn-primary next action-button float-right"
+                          value="Next">Next</button>
+                      </fieldset>
+
+
+                      <fieldset>
+                        <div class="form-card text-left">
+                          <div class="row">
+                            <div class="col-7">
+                              <h3 class="mb-4">Academic Information:</h3>
+                            </div>
+                            <div class="col-5">
+                              <h2 class="steps">Step 2 - 4</h2>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Admission Date: *</label>
+                                <input type="date" class="form-control" name="admission_date" />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Graduation Date:</label>
+                                <input type="date" class="form-control" name="graduation_date" />
+                              </div>
+                            </div>
+
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Section: *</label>
+                                <input type="text" class="form-control" name="section" placeholder="Section" />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Roll Number: *</label>
+                                <input type="number" class="form-control" name="roll_number"
+                                  placeholder="Roll Number" />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Picture:</label>
+                                <input type="file" class="form-control" name="profile_p" accept="image/*" />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Class Grade: *</label>
+                                <select name="class_grade" class="form-control selectpicker" data-live-search="true">
+                                  <option selected>class</option>
+                                  <option value="Play Group">Play Group</option>
+                                  <option value="nersary">Nersary</option>
+                                  <option value="KG">KG</option>
+                                  <option value="Shishu">shishu</option>
+                                  <option value="Class 5">Class 1</option>
+                                  <option value="Class 6">Class 2</option>
+                                  <option value="Class 7">Class 3</option>
+                                  <option value="Class 8">Class 4</option>
+                                  <option value="Class 9">Class 5</option>
+                                  <option value="Class 10">Class 6</option>
+                                  <option value="Class 11">Class 7</option>
+                                  <option value="Class 12">Class 8</option>
+                                  <option value="Class 13">Class 9</option>
+                                  <option value="Class 14">Class 10</option>
+                                  <option value="HSC 1st">HSC 1st </option>
+                                  <option value="HSC 2nd">HSC 2nd</option>
+                                  <option value="Hons 1st">Hons 1st</option>
+                                  <option value="Hons 2nd">Hons 2nd</option>
+                                  <option value="Hons 3rd">Hons 3rd</option>
+                                  <option value="Hons 4th">Hons 4th</option>
+                                  <option value="Degree 1st">Degree 1st</option>
+                                  <option value="Degree 2nd">Degree 2nd</option>
+                                  <option value="Degree 3rd">Degree 3rd</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                        <button type="button" name="next" class="btn btn-primary next action-button float-right"
+                          value="Next">Next</button>
+                        <button type="button" name="previous"
+                          class="btn btn-dark previous action-button-previous float-right mr-3"
+                          value="Previous">Previous</button>
+                      </fieldset>
+                      <fieldset>
+                        <div class="form-card text-left">
+
+                          <div class="row">
+                            <div class="col-7">
+                              <h3 class="mb-4">Others Info:</h3>
+                            </div>
+                            <div class="col-5">
+                              <h2 class="steps">Step 3 - 4</h2>
+                            </div>
+                          </div>
+
+                          <!-- Medical Information Section -->
+                          <div class="row mt-4">
+                            <div class="col-md-12">
+                              <h4 class="mb-4">Medical Information</h4>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Allergies:</label>
+                                <textarea class="form-control" name="allergies"
+                                  placeholder="Enter any known allergies"></textarea>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Medications:</label>
+                                <textarea class="form-control" name="medications"
+                                  placeholder="Enter medications"></textarea>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Emergency Contact for Medical:</label>
+                                <input type="text" class="form-control" name="emergency_contact_medical"
+                                  placeholder="Emergency Contact for Medical" />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Blood Group:</label>
+                                
+                                  <select   name="blood_group" class="form-control selectpicker" data-live-search="true">
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label>Doctor Contact Info:</label>
+                                <textarea class="form-control" name="doctor_contact_info"
+                                  placeholder="Enter doctor contact information"></textarea>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Behavioral Information Section -->
+                          <div class="row mt-4">
+                            <div class="col-md-12">
+                              <h4 class="mb-4">Behavioral Information</h4>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Conduct Grades:</label>
+                              
+                                  <select name="conduct_grades" class="form-control selectpicker" data-live-search="true">
+                                    <option value="Excellent">Excellent</option>
+                                    <option value="Good">Good</option>
+                                    <option value="Satisfactory">Satisfactory</option>
+                                    <option value="Needs Improvement">Needs Improvement</option>
+                                    <option value="Unsatisfactory">Unsatisfactory</option>
+                                </select>
+                            
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label>Disciplinary Records:</label>
+                                <textarea class="form-control" name="disciplinary_records"
+                                  placeholder="Enter disciplinary records"></textarea>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Extracurricular Activities Section -->
+                          <div class="row mt-4">
+                            <div class="col-md-12">
+                              <h4 class="mb-4">Extracurricular Activities</h4>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label>Clubs and Societies:</label>
+                                <textarea class="form-control" name="clubs_and_societies"
+                                  placeholder="Enter clubs and societies"></textarea>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label>Sports Participation:</label>
+                                <textarea class="form-control" name="sports_participation"
+                                  placeholder="Enter sports participation"></textarea>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label>Achievements:</label>
+                                <textarea class="form-control" name="achievements"
+                                  placeholder="Enter achievements"></textarea>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Document Information Section -->
+                          <div class="row mt-4">
+                            <div class="col-md-12">
+                              <h4 class="mb-4">Document Information</h4>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label>Birth Certificate:</label>
+                                <input type="file" class="form-control" name="birth_certificate"
+                                  accept="application/pdf, image/*" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <input type="submit" value="Submit" class="btn btn-success ">
+
+                        <button type="button" name="previous"
+                          class="btn btn-dark previous action-button-previous float-right mr-3"
+                          value="Previous">Previous</button>
+                      </fieldset>
+                      <fieldset>
+                        <div class="form-card">
+                          <div class="row">
+                            <div class="col-7">
+                              <h3 class="mb-4 text-left">Extracurricular:</h3>
+                            </div>
+                            <div class="col-5">
+                              <h2 class="steps">Step 4 - 4</h2>
+                            </div>
+                          </div>
+
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

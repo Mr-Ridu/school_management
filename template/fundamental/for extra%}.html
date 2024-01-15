@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css">
+    <title>Guardian Relationships</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <label for="relationshipSelect" class="form-label">Select Relationship:</label>
+    <select class="selectpicker form-select" id="relationshipSelect" data-live-search="true">
+        <option selected disabled>Select Relationship</option>
+        <option value="parent">Parent</option>
+        <option value="mother">Mother</option>
+        <option value="father">Father</option>
+        <!-- Add other relationship options from the list -->
+        <option value="grandparent">Grandparent</option>
+        <option value="uncle">Uncle</option>
+        <option value="aunt">Aunt</option>
+        <!-- ... -->
+        <option value="other">Other (Specify)</option>
+    </select>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#relationshipSelect').selectpicker();
+    });
+</script>
+
+</body>
+</html>
+
+
+        <!-- Your form with class and section dropdowns -->
+        <form id="filterForm">
+            <label for="classDropdown">Select Class:</label>
+            <select id="classDropdown" name="class" onchange="updateSections()">
+              <option value="">Select Class</option>
+              <option value="class1">Class 1</option>
+              <option value="class2">Class 2</option>
+            </select>
+          
+            <label for="sectionDropdown">Select Section:</label>
+            <select id="sectionDropdown" name="section">
+              <!-- Sections will be dynamically populated based on the selected class -->
+            </select>
+          
+            <button type="submit">Filter</button>
+          </form>
+          
+
+          <script>
+            function updateSections() {
+              // Get the selected class value
+              var selectedClass = document.getElementById("classDropdown").value;
+            
+              // Get the section dropdown element
+              var sectionDropdown = document.getElementById("sectionDropdown");
+            
+              // Clear existing options
+              sectionDropdown.innerHTML = "";
+            
+              // Define sections based on the selected class
+              var sections = {};
+              sections.class1 = ["Shapla", "Golap", "Joba"];
+              sections.class2 = ["Peyara", "Lichu"];
+            
+              // Populate section options based on the selected class
+              var sectionOptions = sections[selectedClass] || [];
+            
+              // Add default option
+              var defaultOption = document.createElement("option");
+              defaultOption.text = "Select Section";
+              sectionDropdown.add(defaultOption);
+            
+              // Add section options
+              sectionOptions.forEach(function (section) {
+                var option = document.createElement("option");
+                option.value = section.toLowerCase();
+                option.text = section;
+                sectionDropdown.add(option);
+              });
+            }
+            </script>        

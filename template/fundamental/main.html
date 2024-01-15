@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/fav.ico' %}" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Education master is one of the best educational html template, it's suitable for all education websites like university,college,school,online education,tution center,distance education,computer education">
+    <meta name="keyword" content="education html template, university template, college template, school template, online education template, tution center template">
+    <!-- FAV ICON(BROWSER TAB ICON) -->
+
+    <title> {% block title %} {% endblock %} </title>
+
+
+    {% include 'fundamental/header.html' %}
+</head>
+
+
+<body>
+    {% include 'fundamental/navbar.html' %}
+
+    {% block content %}
+
+    <!-- body here -->
+
+    {% endblock content %}
+
+
+    {% include 'fundamental/footer.html' %}
+    {% include 'fundamental/javascripts.html' %}
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+{% extends 'dash/hfn/dash.html' %}
+{% load static %}
+{% block title %}Add Exam{% endblock %}
+
+{% block content %}
+
+
+<!--== BODY INNER CONTAINER ==-->
+<div class="sb2-2">
+    <!--== breadcrumbs ==-->
+    <div class="sb2-2-2">
+        <ul>
+            <li><a href="index-2.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre"><a href="#"> Add New Exam</a>
+            </li>
+            <li class="page-back"><a href="index-2.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--== User Details ==-->
+    <div class="sb2-2-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-inn-sp admin-form">
+                    <div class="sb2-2-add-blog sb2-2-1">
+                        <div class="tab-content">
+                            <div id="home" class="tab-pane fade active in">
+                                <div class="box-inn-sp">
+                                    <div class="inn-title">
+                                        <h4>Exam Details</h4>
+                                    </div>
+                                    <div class="bor">
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="input-field col s12 col-md-12">
+                                                    <input type="text" value="" name="main_exam_name" class="validate">
+                                                    <label class="">Main exam name</label>
+                                                </div>
+                                                <div class="input-field col s12 col-md-12">
+                                                    <input type="text" value="" name="exam_name" class="validate">
+                                                    <label>Exam name</label>
+                                                </div>
+                                                <div class="input col col-md-12">
+                                                    <label>Exam Date</label>
+                                                    <input type="date" value="" name="exam_date" class="validate">
+
+                                                </div>
+                                                <div class=" col s12 col-md-12">
+                                                    <label>Start time</label>
+                                                    <input type="time" value="" name="exam_time">
+
+                                                </div>
+                                               
+                                                <div class="input-field col s12 col-md-12">
+                                                    <textarea name="details_of_exam" id="" cols="30" rows="10"></textarea>
+                                                    <label>Details</label>
+                                                </div>
+                                                <div class="input col col-md-6">
+                                                    <label>Reg. Start Date</label>
+                                                    <input type="date" name="registration_start_date" value="" class="validate">
+                                                </div>
+                                                <div class="input col col-md-6">
+                                                    <label>Reg. End Date</label>
+                                                    <input type="date" name="registration_end_date" value="" class="validate">
+                                                </div>
+                                            </div>
+                                            <input type="submit" class="btn btn-md" value="Add Exam">
+                                            <!-- <div class="row">
+
+                                                <div class="input-field col s12 col-md-12">
+                                                    <select>
+                                                        <option value="" disabled selected>Select Status</option>
+                                                        <option value="1">Active</option>
+                                                        <option value="2">De-Active</option>
+                                                        <option value="3">Delete</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12">
+                                                    <i class="waves-effect waves-light btn-large waves-input-wrapper"><input
+                                                            type="submit" class="waves-button-input" value="Submit"></i>
+                                                </div>
+                                            </div> -->
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

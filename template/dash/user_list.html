@@ -1,0 +1,79 @@
+{% extends 'dash/hfn/dash.html' %}
+{% load static %}
+{% block title %}User List{% endblock %}
+
+{% block content %}
+
+
+            <!--== BODY INNER CONTAINER ==-->
+            <div class="sb2-2">
+                <!--== breadcrumbs ==-->
+                <div class="sb2-2-2">
+                    <ul>
+                        <li><a href="index-2.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                        </li>
+                        <li class="active-bre"><a href="#"> Users</a>
+                        </li>
+                        <li class="page-back"><a href="index-2.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--== User Details ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>User Details</h4>
+                                    <p>All about Users like name, student id, phone, email, country, city and more</p>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Name</th>
+                                                    <th>Username</th>
+                                                    <th>Email</th>
+                                                    <th>Role</th>
+                                                    <th>Date of Join</th>
+													
+													<th>Staus</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for detail in all_u_data %}
+                                                <tr>
+                                                    <td><span class="list-img"><img src="media/{{BASE_DIR}}/{{detail.profile_picture}}" alt=""></span>
+                                                    </td>
+                                                   
+                                                    <td>  {{detail.first_name}}  {{detail.last_name}}
+                                                    </td>
+                                                    <td> {% if request.user.username == detail.username %}<span class="list-enq-name"> {{detail.username}}</span>
+                                                        {% else %} {{detail.username}}  {% endif %}
+                                                    </td>
+                                                    <!-- <td> {{detail.username}}</td> -->
+                                                    <td> {{detail.email}}</td>
+                                                    <td> {{detail.role}}</td>
+													<td>{{detail.date_joined}}</td>
+                                                   
+													<td>
+                                                        {{detail.is_active}}
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                               
+                                          
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

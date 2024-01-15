@@ -1,0 +1,147 @@
+{% extends 'dash/hfn/dash.html' %}
+{% load static %}
+{% block title %}Subjects{% endblock %}
+{% block content %}
+<!--== BODY INNER CONTAINER ==-->
+<div class="sb2-2">
+    <!--== breadcrumbs ==-->
+    <div class="sb2-2-2">
+        <ul>
+            <li><a href="index-2.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre"><a href="#"> Subjects</a>
+            </li>
+            <li class="page-back"><a href="index-2.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--== User Details ==-->
+    <div class="sb2-2-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-inn-sp admin-form">
+                    <div class="box-inn-sp">
+                        <div class="inn-title">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Subjects</h4>
+                                </div>
+                                <div class="col-md-6 text-right add_sub">
+                                    <div> <a href="#!" data-toggle="modal" data-target="#add_subject">Add Subjects</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-inn">
+                            <div class="table-responsive table-desi">
+                                <table class="table table-hover" id="example">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Subjects's Name</th>
+
+                                            <th>Class</th>
+
+                                            <th>see</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        {% for s in subs %}
+                                        <tr>
+                                            <td>{{forloop.counter}}</td>
+                                            <td>
+
+                                                {{s.subject_name}} </td>
+                                            <td>
+                                                {% for class_grade in s.class_grade.all %}
+                                                {{ class_grade.classess }}
+                                                {% if not forloop.last %}| {% endif %}
+                                                {% endfor %}
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-link btn-details"
+                                                    data-subject="{{ s.subject_name }}"
+                                                    data-grades="{% for class_grade in s.class_grade.all %}{{ class_grade.classess }}{% if not forloop.last %}, {% endif %}{% endfor %}">See Classes</button>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+
+                                <div id="detailsModal" class="d-none">
+                                    <h5 id="modalSubjectName"></h5>
+                                    <p id="modalClassGrades"></p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- _-modal part--- -->
+
+<div id="add_subject" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addSubjectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addSubjectModalLabel">Add Subject</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="subjectName">Subject Name:</label>
+              <input type="text" class="form-control" id="subjectName" name="subject_name" required autofocus>
+            </div>
+            <div class="form-group">
+              <label for="classGrades">Select Class Grades:</label>
+              <div class="form-check form-check-inline">
+                {% for class_grade in class_grades %}
+                  <input class="form-check-input" type="checkbox" name="class_grade" id="classGrade_{{ class_grade.id }}" value="{{ class_grade.id }}">
+                  <label class="form-check-label" for="classGrade_{{ class_grade.id }}">{{ class_grade.classess }}</label>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add Subject</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+
+
+<script>
+    // Script to handle displaying class details without modal
+    $(document).ready(function () {
+        $('.btn-details').on('click', function () {
+            var subjectName = $(this).data('subject');
+            var classGrades = $(this).data('grades');
+
+            $('#modalSubjectName').text('Class Name: ' + subjectName);
+            $('#modalClassGrades').text('Class Grades: ' + classGrades);
+
+            $('#detailsModal').removeClass('d-none');
+        });
+    });
+</script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+
+{% endblock %}

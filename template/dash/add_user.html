@@ -1,0 +1,99 @@
+{% extends 'dash/hfn/dash.html' %}
+{% load static  %}
+{% block title %}Add User{% endblock %}
+
+{% block content %}
+
+
+            <!--== BODY INNER CONTAINER ==-->
+            <div class="sb2-2">
+                <!--== breadcrumbs ==-->
+                <div class="sb2-2-2">
+                    <ul>
+                        <li><a href="index-2.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                        </li>
+                        <li class="active-bre"><a href="#"> Add new User</a>
+                        </li>
+                        <li class="page-back"><a href="index-2.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--== User Details ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+						<div class="box-inn-sp admin-form">
+                                <div class="inn-title">
+                                    <h4>Add New User</h4>
+                                    <p>Here you can edit your website basic details URL, Phone, Email, Address, User and password and more</p>
+                                </div>
+                                <div class="tab-inn">
+                                    <form method="post" action="{% url 'add_user' %}" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <input type="text" value="" name="first_name" class="validate" required>
+                                                <label class="">First name</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <input type="text" value="" name="last_name" class="validate" required>
+                                                <label class="">Last name</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <input type="text" value="" name="username" class="validate" required>
+                                                <label class="">Username</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <input type="email" class="validate" name="email" value="" required>
+                                                <label class="">Email </label>
+                                            </div>
+                                        </div>
+                                     
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <input type="password" value="" name="password" class="validate">
+                                                <label class="">Password</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <input type="password" value="" name="confirm_password" class="validate">
+                                                <label class="">Confirm Password</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Role *</label>
+                                            <select name="role" class="form-control selectpicker" data-live-search="true">
+                                              <option selected>Select Role</option>
+                                              <option value="admin">Admin</option>
+                                              <option value="principal">Principal</option>
+                                              <option value="teacher">teacher</option>
+                                            </select>
+                                          </div>
+
+                                          
+                                        <div class="row">
+											<div class="file-field input-field  s12">
+												<div class="btn admin-upload-btn">
+													<span>Profile Picture</span>
+													<input type="file" name="profile_picture"  accept="image/*">
+												</div>
+												<div class="file-path-wrapper">
+													<input class="file-path validate" type="text" placeholder="Profile image">
+												</div>
+											</div>
+                                            
+                                           <div class="row">
+                                            <div class="input-field col s12">
+                                                <i class="waves-effect waves-light btn-large waves-input-wrapper" ><input type="submit" class="waves-button-input"></i>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

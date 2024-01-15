@@ -1,0 +1,73 @@
+{% load static %}
+
+
+
+
+<script src="{% static 'js/main.min.js' %}"></script>
+<script src="{% static 'js/materialize.min.js' %}"></script>
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<script src="{% static 'js/customs.js' %}"></script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+    
+<!-- for data tables -->
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var dataTable = new DataTable('#example', {
+            stateSave: true
+        });
+        $('.dataTables_filter input[type="search"]').css({
+            'width': '200px',
+        });
+        $('.dataTables_length select').addClass('form-select').css({
+            'width': '180px'  // Adjust the width as needed
+        });
+    });
+</script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+
+<script>
+    $('.my-select').selectpicker();
+</script>
+
+
+
+
+<!-- --messege -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% if messages %}
+    {% for m in messages %}
+    <script>
+           Swal.fire({
+        position: "top-end",
+        icon: "{{m.tags}}",
+        title: "{{m}}",
+        showConfirmButton: false,
+        timer: 1500
+      }); 
+    </script>
+
+    {% endfor %}
+{% endif %}
+

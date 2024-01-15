@@ -1,0 +1,119 @@
+{% extends 'dash/hfn/dash.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block title %}Make CT{% endblock %}
+{% block content %}
+<!--== BODY INNER CONTAINER ==-->
+<div class="sb2-2">
+    <!--== breadcrumbs ==-->
+    <div class="sb2-2-2">
+        <ul>
+            <li><a href="index-2.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre"><a href="#"> Add Classteacher</a>
+            </li>
+            <li class="page-back"><a href="index-2.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--== User Details ==-->
+    <div class="sb2-2-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-inn-sp admin-form">
+                    <div class="inn-title">
+                        <h4>Add Classteacher</h4>
+                    </div>
+                   <marquee > <p><b>Note: The class teacher must have an updated profile. If you do not find their name in the
+                            dropdown, please contact them to update their profile information.
+                        </b></p></marquee> 
+                    <div class="bor">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label>Teacher: *</label>
+                                    <select name="tuser" class="form-control selectpicker" data-live-search="true">
+                                        <option selected>Teacher</option>
+                                        {% for t in teacher %}
+                                        <option value="{{t.id}}">{{t.first_name}} {{t.last_name}} ({{t.username}})
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <!-- <div class="form-group ">
+                                    <label>Class : *</label>
+                                    <select name="class" class="form-control selectpicker" data-live-search="true">
+                                        {% for t in stclass %}
+                                        <option value="">{{t.classess}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div> -->
+                                <div class="form-group">
+                                    <label>Section : *</label>
+                                    <select name="section" class="form-control selectpicker" data-live-search="true">
+                                        <option selected disabled> Select Section of Classes</option>
+                                        {% for t in section %}
+                                        <option value="{{t.class_grade.classess}},{{t.sec}}">{{t.sec}} ({{t.class_grade.classess}})
+                                        </option>
+                                        {% endfor %}
+                                    </select> 
+                                </div>
+                                <input type="submit" value="Submit" class="btn">
+
+                            </div>
+                        </form>
+                    </div>
+
+
+
+                    <div class="bor">
+                        <div class="box-inn-sp">
+                            <div class="inn-title">
+                                <h4>Classteachers</h4>
+                            </div>
+                            <div class="tab-inn">
+                                <div class="table-responsive table-desi">
+                                    <table class="table table-hover" id="example">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Teacher's Name</th>
+                                                <th>Teacher's username</th>
+                                                <th>Class</th>
+                                                <th>Section</th>
+                                                <th>Edit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            {% for t in teacher %}
+                                            {% if t.classteacher %}
+                                            <tr>
+                                                <td>{{forloop.counter}}</td>
+                                                <td>{{t.first_name}}{{t.last_name}}</td>
+                                                <td>{{t.username}}</td>
+                                                <td>{{ t.classteacher|cls}}</td>
+                                                <td>{{ t.classteacher|sec}}</td>  
+                                                <td> </td>
+<!-- here o is section and 1 is class -->
+                                            </tr>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

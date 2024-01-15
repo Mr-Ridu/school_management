@@ -1,0 +1,139 @@
+{% extends 'fundamental/main.html' %}
+{% load static %}
+{% block title %}{{request.user}}|{{request.user.role}}{% endblock %}
+
+{% block content %}
+
+
+
+    <!--SECTION START-->
+    <section>
+      <div class="pro-cover">
+      </div>
+      <div class="pro-menu">
+          <div class="container">
+              <div class="col-md-9 col-md-offset-3">
+                  <ul>
+                      <!-- <li><a href="dashboard.html">My Dashboard</a></li> -->
+                      <li><a href="db-profile.html" class="pro-act">Profile</a></li>
+                      <!-- <li><a href="db-courses.html">Courses</a></li>
+                      <li><a href="db-exams.html">Exams</a></li>
+                      <li><a href="db-time-line.html">Time Line</a></li>
+                      <li><a href="#">Entry</a></li>
+                      <li><a href="#">Notifications</a></li> -->
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="stu-db">
+          <div class="container pg-inn">
+              <div class="col-md-3">
+                  <div class="pro-user">
+                      <img src="media/{{BASE_DIR}}/{{request.user.profile_picture}}" alt="user">
+                  </div>
+                  <div class="pro-user-bio">
+                      <ul>
+                          <li>
+                              <h4>{{techardata.first_name}} {{techardata.last_name}} <sub class="em_id">{{request.user.employee_id}}</sub> </h4>
+                          </li>
+                          <li class="designation">{{techardata.designation}},{{techardata.department}} </li>
+{% if techardata.facebook %}   <li><a href="{{techardata.facebook}}" target="_blank"><i class="fa fa-facebook"></i> Facebook</a></li>    {% endif %}
+{% if techardata.whatsapp %}    <li><a href="{{techardata.whatsapp}}" target="_blank"><i class="fa fa-whatsapp"></i> Whats'app</a></li>   {% endif %}
+{% if techardata.twitter %} <li><a href="{{techardata.twitter}}" target="_blank"><i class="fa fa-twitter"></i> Twitter</a></li>      {% endif %}
+{% if techardata.youtube %}   <li><a href="{{techardata.youtube}}" target="_blank"><i class="fa fa-youtube"></i> Youtube</a></li>      {% endif %}
+{% if techardata.instagrame %}    <li><a href="{{techardata.instagrame}}" target="_blank"><i class="fa fa-instagram"></i> Instagram</a></li>      {% endif %}
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-md-9">
+                  <div class="udb">
+
+                      <div class="udb-sec udb-prof">
+                          <h4><img src="images/icon/db1.png" alt="" /> My Profile</h4>
+                          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed
+                              to using 'Content here, content here', making it look like readable English.</p>
+                          <div class="sdb-tabl-com sdb-pro-table">
+                              <table class="responsive-table bordered">
+                                  <tbody>
+                                      <tr>
+                                          <td>Teacher's Name</td>
+                                          <td>:</td>
+                                          <td>{{techardata.first_name}} {{techardata.last_name}}</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Teacher's Id</td>
+                                          <td>:</td>
+                                          <td>{{request.user.employee_id}}</td>
+                                      </tr>
+                                      <tr>
+                                          <td>ClassTeacher</td>
+                                          <td>:</td>
+                                          <td>{{techardata.classteacher}}</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Qualifications</td>
+                                          <td>:</td>
+                                          <td>{{ techardata.qualifications }}</li>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>Department</td>
+                                          <td>:</td>
+                                          <td>{{ techardata.department }}</li>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>Subject Taught</td>
+                                          <td>:</td>
+                                          <td>{{ techardata.subjects_taught }}</li>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>Email</td>
+                                          <td>:</td>
+                                          <td>{{request.user.email}}|{{techardata.contact_email}}</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Phone</td>
+                                          <td>:</td>
+                                          <td class="copy_text">{{techardata.contact_phone}}</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Date of Join</td>
+                                          <td>:</td>
+                                          <td>{{techardata.joining_date}}</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Address</td>
+                                          <td>:</td>
+                                          <td>{{techardata.address}}</td>
+                                      </tr>
+                                     
+                                      <tr>
+                                          <td>Experience</td>
+                                          <td>:</td>
+                                          <td>{{techardata.years_of_experience}}</td>
+                                      </tr>
+                                      <!-- <tr>
+                                          <td>Status</td>
+                                          <td>:</td>
+                                          <td><span class="db-done">Active</span> </td>
+                                      </tr> -->
+                                  </tbody>
+                              </table>
+                              <div class="sdb-bot-edit">
+                                  <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
+                                  <a href="{% url 'update_teacher_profile' %}" class="waves-effect waves-light btn-large sdb-btn sdb-btn-edit"><i class="fa fa-pencil"></i> Edit my profile</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--SECTION END-->
+
+
+
+{% endblock %}

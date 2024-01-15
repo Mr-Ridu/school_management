@@ -1,0 +1,74 @@
+{% extends 'dash/hfn/dash.html' %}
+{% load static %}
+{% block title %}All Student{% endblock %}
+
+{% block content %}
+
+
+            <!--== BODY INNER CONTAINER ==-->
+            <div class="sb2-2">
+                <!--== breadcrumbs ==-->
+                <div class="sb2-2-2">
+                    <ul>
+                        <li><a href="index-2.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                        </li>
+                        <li class="active-bre"><a href="#"> Users(Students)</a>
+                        </li>
+                        <li class="page-back"><a href="index-2.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--== User Details ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>Student Details</h4>
+                                    <p>All about students like name, student id, phone, email, country, city and more</p>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table class="table table-hover" id="example">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Class</th>
+                                                    <th>Student ID</th>
+                                                    <th>Roll</th>
+                                                    <th>Date of birth</th>
+													
+													<th>View</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for detail in all_s_data %}
+                                                <tr>
+                                                   
+                                                    <td><a href="#"><span class="list-enq-name"> {{detail.first_name}}  {{detail.last_name}}</span><span class="list-enq-city"> {{detail.address}}</span></a>
+                                                    </td>
+                                                    <td> {{detail.class_grade}}</td>
+                                                    <td> {{detail.student_id}}</td>
+                                                    <td> {{detail.roll_number}}</td>
+													<td>{{detail.date_of_birth}}</td>
+                                                   
+													<td>
+                                                        {% if request.user.role == 'admin' or 'superuser' %} Edit
+                                                        {% else %} U cnt tke actn  {% endif %}
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                               
+                                          
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

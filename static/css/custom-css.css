@@ -1,0 +1,42 @@
+.pop{
+   
+    background-color: blue;
+}
+
+.designation{
+    font-size: 1rem;
+
+}
+.em_id{
+    font-size: 0.9rem;
+}
+.copy_text{
+    cursor:copy;
+}
+
+.myac{
+    font-weight: bold;
+    margin-top: 20px;
+    color: rgb(245, 237, 237);
+    cursor: pointer;
+}
+
+.boro div {
+    font-weight: bold;
+}
+
+.add_sub div{
+    font-size: 20px;
+}
+.upper{
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.ret{
+    font-family:'Courier New', Courier, monospace
+}
+
+.showres{
+    background-color:rgb(164, 233, 233);
+}

@@ -1,0 +1,70 @@
+{% extends 'dash/hfn/dash.html' %}
+{% load static %}
+{% block title %}All Exam{% endblock %}
+
+{% block content %}
+
+
+           <!--== BODY INNER CONTAINER ==-->
+           <div class="sb2-2">
+            <!--== breadcrumbs ==-->
+            <div class="sb2-2-2">
+                <ul>
+                    <li><a href="index-2.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                    </li>
+                    <li class="active-bre"><a href="#"> All Exams</a>
+                    </li>
+                    <li class="page-back"><a href="index-2.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!--== User Details ==-->
+            <div class="sb2-2-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box-inn-sp">
+                            <div class="inn-title">
+                                <h4>Exams Time Table</h4>
+                                <p>All about students like name, student id, phone, email, country, city and more</p>
+                            </div>
+                            <div class="tab-inn">
+                                <div class="table-responsive table-desi">
+                                    <table class="table table-hover" id="example">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Exam Name</th>
+                                                <th>Exam Date</th>
+                                                <th>Exam Time</th>
+                                                <!-- <th>Duration</th> -->
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for ex in exams %}
+                                            <tr>
+                                                <td>{{forloop.counter}}</td>
+                                                <td>{{ex.exam_name}}</td>
+                                                <td>{{ex.exam_date}}</td>
+                                                <td>{{ex.exam_time}}</td>
+                                                <!-- <td>{{ex.exams_availability }} </td>    -->
+                                                <td>
+                                                    {% if ex.exams_availability %} <a href="{% url 'add_marks' ex.id %}" class="ad-st-view label label-success">Enter</a>{% endif %}
+                                                    {% if user.is_admin %}   <a href="admin-exam-edit.html" class="ad-st-view">Edit</a>{% endif %} </td>
+
+                                               
+                                            </tr>
+                                          {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}
