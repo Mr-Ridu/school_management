@@ -51,8 +51,8 @@
                                                 <!-- <td>{{ex.exams_availability }} </td>    -->
                                                 <td>
                                                     {% if ex.exams_availability %} <a href="{% url 'add_marks' ex.id %}" class="ad-st-view label label-success">Enter</a>{% endif %}
-                                                    {% if user.is_admin %}   <a href="admin-exam-edit.html" class="ad-st-view">Edit</a>{% endif %} </td>
-
+                                                    {% if user.is_admin %}   <a href="admin-exam-edit.html" class="ad-st-view">Edit</a>{% endif %}
+                                                       <div class="showdlt"><i class="fa fa-trash" aria-hidden="true"></i>  </div> </td>
                                                
                                             </tr>
                                           {% endfor %}

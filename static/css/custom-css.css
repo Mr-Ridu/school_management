@@ -40,3 +40,24 @@
 .showres{
     background-color:rgb(164, 233, 233);
 }
+
+#detailsModal{
+    position: fixed;
+    top: 20%;
+    left: 65%;
+    transform: translate(-80%, -35%);
+    background-color: #10425a;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(100, 15, 15, 0.1);
+    border-radius: 8px;
+    z-index: 1000;
+}
+#modalSubjectName{
+    color: aliceblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+#modalClassGrades{
+    color: aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+}

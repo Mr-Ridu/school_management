@@ -11,7 +11,8 @@ from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 def wisdomwave(request):
-    return render (request, 'index.html')
+    all = SchoolInfo.objects.first()
+    return render (request, 'index.html',{'all':all})
 
 
 def UserLogin(request):
