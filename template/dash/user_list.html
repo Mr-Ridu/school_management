@@ -30,12 +30,13 @@
                                 </div>
                                 <div class="tab-inn">
                                     <div class="table-responsive table-desi">
-                                        <table class="table table-hover">
+                                        <table class="table table-hover" id="example">
                                             <thead>
                                                 <tr>
                                                     <th></th>
                                                     <th>Name</th>
                                                     <th>Username</th>
+                                                    <th>Employee ID</th>
                                                     <th>Email</th>
                                                     <th>Role</th>
                                                     <th>Date of Join</th>
@@ -54,7 +55,7 @@
                                                     <td> {% if request.user.username == detail.username %}<span class="list-enq-name"> {{detail.username}}</span>
                                                         {% else %} {{detail.username}}  {% endif %}
                                                     </td>
-                                                    <!-- <td> {{detail.username}}</td> -->
+                                                    <td> {{detail.employee_id}}</td> 
                                                     <td> {{detail.email}}</td>
                                                     <td> {{detail.role}}</td>
 													<td>{{detail.date_joined}}</td>

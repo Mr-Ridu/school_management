@@ -1,26 +1,128 @@
 {% extends 'dash/hfn/dash.html' %}
 {% load static %}
-{% block title %}All Teacher{% endblock %}
+{% block title %}Update Profile{% endblock %}
 
 {% block content %}
 
 
-<!--== BODY INNER CONTAINER ==-->
 <div class="sb2-2">
-    <!--== breadcrumbs ==-->
     <div class="sb2-2-2">
-        <div class="container mt-4">
-            <h2>Update Teacher Profile</h2>
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Update Profile</button>
-            </form>
-        </div>
+        <ul>
+            <li><a href="index-2.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre"><a href="#"> Update Teacher Details</a>
+            </li>
+            <li class="page-back"><a href="index-2.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
 
+    <div class="sb2-2-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-inn-sp">
+                    <div class="inn-title">
+                        <h4>Update Teacher Details</h4>
+                    </div>
+                    <div class="tab-inn">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="first_name">First Name:</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" required>
+                            </div>
+                            <div class="form-group  col-md-6">
+                                <label for="last_name">Last Name:</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender:</label>
+                                <select class="form-control" id="gender" name="gender" required>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                    <option value="O">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact_phone">Contact Phone:</label>
+                                <input type="tel" class="form-control" id="contact_phone" name="contact_phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact_email">Contact Email:</label>
+                                <input type="email" class="form-control" id="contact_email" name="contact_email"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address:</label>
+                                <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="qualifications">Qualifications:</label>
+                                <textarea class="form-control" id="qualifications" name="qualifications" rows="3"
+                                    required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="subjects_taught">Subjects Taught:</label>
+                                <input type="text" class="form-control" id="subjects_taught" name="subjects_taught"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="years_of_experience">Years of Experience:</label>
+                                <input type="number" class="form-control" id="years_of_experience"
+                                    name="years_of_experience" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="joining_date">Joining Date:</label>
+                                <input type="date" class="form-control" id="joining_date" name="joining_date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="department">Department:</label>
+                                <input type="text" class="form-control" id="department" name="department" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="designation">Designation:</label>
+                                <input type="text" class="form-control" id="designation" name="designation" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="job_role">Job Role:</label>
+                                <input type="text" class="form-control" id="job_role" name="job_role">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile_picture">Profile Picture:</label>
+                                <input type="file" class="form-control-file" id="profile_picture"
+                                    name="profile_picture">
+                            </div>
+                            <div class="form-group">
+                                <label for="facebook">Facebook:</label>
+                                <input type="text" class="form-control" id="facebook" name="facebook">
+                            </div>
+                            <div class="form-group">
+                                <label for="twitter">Twitter:</label>
+                                <input type="text" class="form-control" id="twitter" name="twitter">
+                            </div>
+                            <div class="form-group">
+                                <label for="instagram">Instagram:</label>
+                                <input type="text" class="form-control" id="instagram" name="instagram">
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp:</label>
+                                <input type="text" class="form-control" id="whatsapp" name="whatsapp">
+                            </div>
+                            <div class="form-group">
+                                <label for="youtube">YouTube:</label>
+                                <input type="text" class="form-control" id="youtube" name="youtube">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-
-    
 {% endblock %}

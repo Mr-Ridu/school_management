@@ -31,11 +31,22 @@ class CustomUser(AbstractUser):
     objects = CustomUserManager()
     employee_id = models.CharField(max_length=20, unique=True,default='') #remove default option when site is ready
 
+    # def save(self, *args, **kwargs):
+    #     if not self.employee_id:
+    #         session = str(self.date_joined.strftime('%Y'))
+    #         self.employee_id = f'em{session}0{CustomUser.objects.id}'  
+    #     super().save(*args, **kwargs)
+
     def save(self, *args, **kwargs):
         if not self.employee_id:
-            session = str(self.date_joined.strftime('%Y'))
-            self.employee_id = f'em{session}0{CustomUser.objects.last().id}'  
+            last_employee = CustomUser.objects.order_by('-employee_id').first()
+            if last_employee:
+                last_id = int(last_employee.id)  # Assuming format is 'EMPXXX'
+                self.employee_id = 'EMP{:03d}'.format(last_id + 1)
+            else:
+                self.employee_id = 'EMP001'
         super().save(*args, **kwargs)
+
 
 
     def is_teacher(self):
@@ -45,7 +56,7 @@ class CustomUser(AbstractUser):
         return self.role == 'admin'
 
     def is_principal(self):
-        return self.role == 'primcipal'
+        return self.role == 'principal'
 
 
 

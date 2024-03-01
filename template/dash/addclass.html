@@ -1,0 +1,56 @@
+{% extends 'dash/hfn/dash.html' %}
+{% load static %}
+{% block title %}Add Exam{% endblock %}
+
+{% block content %}
+
+
+<!--== BODY INNER CONTAINER ==-->
+<div class="sb2-2">
+    <!--== breadcrumbs ==-->
+    <div class="sb2-2-2">
+        <ul>
+            <li><a href="index-2.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre"><a href="#"> Add New Exam</a>
+            </li>
+            <li class="page-back"><a href="index-2.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--== User Details ==-->
+    <div class="sb2-2-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-inn-sp admin-form">
+                    <div class="sb2-2-add-blog sb2-2-1">
+                        <div class="tab-content">
+                            <div id="home" class="tab-pane fade active in">
+                                <div class="box-inn-sp">
+                                    <div class="inn-title">
+                                        <h4>Exam Details</h4>
+                                    </div>
+                                    <div class="bor">
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="input-field col s12 col-md-12">
+                                                    <input type="text" name="addclass" id="addclass" class="validate">
+                                                    <label for="addclass">Add Class</label>
+                                                </div>
+                                                
+                                            <input type="submit" class="btn btn-md" value="Add Exam">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

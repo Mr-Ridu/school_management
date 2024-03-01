@@ -21,4 +21,5 @@ urlpatterns = [
     path('makeCT', views.makeCT, name="makeCT"),
     path('subjects', views.subjects, name="subjects"),
     path('getresult', views.getresult, name="getresult"),
+    path('addclass', views.addclass, name="addclass"),
 ]

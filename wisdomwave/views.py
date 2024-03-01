@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.models import auth,User
@@ -279,7 +279,6 @@ def getresult(request):
                 frst_obj = the_marks.first()
                 return render(request, 'showresult.html', {'marks': the_marks,'exam_name':exam_name,'frst_obj':frst_obj})
             elif class_name and section and Class_roll:
-                print(class_name,section,Class_roll)
                 the_marks = Mark.objects.filter(exam__exam_name=exam_name, stu_class=class_name,stu_section=section,stu_roll=Class_roll)
                 frst_obj = the_marks.first()
                 return render(request, 'showresult.html', {'marks': the_marks,'exam_name':exam_name,'frst_obj':frst_obj})
@@ -288,6 +287,20 @@ def getresult(request):
         except Mark.DoesNotExist:
             messages.info(request, f"No records found for student ID: {stu_id}")
     return render(request, 'getresult.html', {'exm': exm, 'cls': cls, 'sec': sec})
+
+
+def addclass(request):
+    if request.method=='POST':
+        cls = request.POST.get('addclass')
+        obj,create =class_Grade.objects.get_or_create(classess__icontains=cls)
+        if create:
+            messages.success(request, f"Class created")
+            return render(request, 'dash/addclass.html')
+        else:
+            messages.error(request, f"{cls} already exist")
+            return render(request, 'dash/addclass.html')
+    return render(request, 'dash/addclass.html')
+
 
 
 # def showresult(request,the_marks):
